@@ -1,2 +1,95 @@
-<h1>hello</h1>
-<a href="1.html">1.html</a>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main">
+    <h1 class="idea-content">
+      <span id="idea"></span>
+    </h1>
+    <div class="idea-button">
+      <button onclick="generateIdea()">идея</button>
+    </div>
+  </div>
+  <script src="./ideas.js"></script>
+  <script>
+    function generateIdea() {
+      const idea = ideas[Math.floor(Math.random() * ideas.length)];
+      const ideaHTML = document.getElementById('idea');
+      ideaHTML.classList.add('hide');
+      
+      setTimeout(() => { 
+        ideaHTML.innerText = idea;
+        ideaHTML.classList.remove('hide');
+      }, 300)
+    }
+  </script>
+</body>
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #282c34;
+	  font-family: 'Montserrat', sans-serif;
+    color: #bababa;
+    font-weight: bold;
+  }
+
+  .idea-content {
+    align-self: center;
+
+    font-size: 60px;
+    text-align: center;
+
+    max-height: 100%;
+    overflow: auto;
+  }
+
+  #idea {
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  #idea.hide {
+    opacity: 0;
+  }
+  
+  .main {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 40px;
+  }
+
+  .idea-button {
+    justify-self: center;
+  }
+
+  button {
+    font-family: inherit;
+    color: inherit;
+    outline: none;
+    border: none;
+    font-size: 40px;
+    padding: 16px 30px;
+    background: #1d4b6c;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+    font-weight: bold;
+  }
+
+  button:hover {
+    box-shadow: 0 0 6px #424c5f;
+  }
+</style>
+
+</html>
